@@ -1,0 +1,15 @@
+<!-- behavior_app/templates/student_list.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student List</title>
+</head>
+<body>
+<h1>Student List</h1>
+<ul>
+    {% for student in students %}
+    <li><a href="{% url 'behavior_app:student-detail' student.pk %}">{{ student }}</a></li>
+    {% endfor %}
+</ul>
+</body>
+</html>

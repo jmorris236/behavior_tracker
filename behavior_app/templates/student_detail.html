@@ -1,0 +1,24 @@
+<!-- behavior_app/templates/student_detail.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ student }}</title>
+</head>
+<body>
+<h1>{{ student }}</h1>
+<h2>Notes:</h2>
+<ul>
+    {% for note in notes %}
+    <li>{{ note.behavior }} - {{ note.date }} - {{ note.notes }}</li>
+    {% endfor %}
+</ul>
+<a href="{% url 'behavior_app:note-add' %}">Add Note</a>
+
+<h2>Top 5 Behaviors:</h2>
+<ul>
+    {% for behavior in behaviors %}
+    <li>{{ behavior.name }} ({{ behavior.num_occurrences }} occurrences)</li>
+    {% endfor %}
+</ul>
+</body>
+</html>

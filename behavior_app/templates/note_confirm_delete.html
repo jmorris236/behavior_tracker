@@ -1,0 +1,15 @@
+<!-- behavior_app/templates/note_confirm_delete.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Confirm Delete</title>
+</head>
+<body>
+<h1>Confirm Delete</h1>
+<p>Are you sure you want to delete the note for {{ note.student }} - {{ note.behavior }} - {{ note.date }}?</p>
+<form method="post">
+    {% csrf_token %}
+    <input type="submit" value="Confirm">
+</form>
+</body>
+</html>

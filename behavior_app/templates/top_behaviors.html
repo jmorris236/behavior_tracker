@@ -1,0 +1,15 @@
+<!-- behavior_app/templates/top_behaviors.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Top 5 Behaviors</title>
+</head>
+<body>
+<h1>Top 5 Behaviors</h1>
+<ul>
+    {% for behavior in behaviors %}
+    <li>{{ behavior.name }} ({{ behavior.num_occurrences }} occurrences)</li>
+    {% endfor %}
+</ul>
+</body>
+</html>

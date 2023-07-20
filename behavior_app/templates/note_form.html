@@ -1,0 +1,34 @@
+<!-- behavior_app/templates/note_form.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add/Edit Note</title>
+</head>
+<body>
+<h1>Add/Edit Note</h1>
+<form method="post">
+    {% csrf_token %}
+    <label for="id_student">Student:</label>
+    <select name="student" id="id_student">
+        {% for student in form.fields.student.choices %}
+        <option value="{{ student.0 }}" {% if student.0 == form.instance.student_id %}selected{% endif %}>{{ student.1 }}</option>
+        {% endfor %}
+    </select>
+    <br>
+    <label for="id_behavior">Behavior:</label>
+    <select name="behavior" id="id_behavior">
+        {% for behavior in form.fields.behavior.choices %}
+        <option value="{{ behavior.0 }}" {% if behavior.0 == form.instance.behavior_id %}selected{% endif %}>{{ behavior.1 }}</option>
+        {% endfor %}
+    </select>
+    <br>
+    <label for="id_date">Date:</label>
+    <input type="date" name="date" id="id_date" value="{{ form.instance.date }}">
+    <br>
+    <label for="id_notes">Notes:</label>
+    <textarea name="notes" id="id_notes">{{ form.instance.notes }}</textarea>
+    <br>
+    <input type="submit" value="Save">
+</form>
+</body>
+</html>
