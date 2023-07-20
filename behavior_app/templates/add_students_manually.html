@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+
+<html>
+<head>
+    <title>Add Students Manually</title>
+</head>
+
+{% block content %}
+<body>
+<h1>Add Students Manually</h1>
+<form method="post">
+    {% csrf_token %}
+    <label for="id_first_name">First Name:</label>
+    <input type="text" name="first_name" id="id_first_name">
+    <br>
+    <label for="id_last_name">Last Name:</label>
+    <input type="text" name="last_name" id="id_last_name">
+    <br>
+    <input type="submit" value="Add Student">
+</form>
+</body>
+{% endblock %}
+</html>

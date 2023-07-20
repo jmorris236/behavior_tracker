@@ -3,17 +3,16 @@
 
 <html>
 <head>
-    <title>Add Note</title>
+    <title>Delete Student</title>
 </head>
 {% block content %}
 <body>
-<h1>Add Note</h1>
+<h1>Delete Student</h1>
+<p>Are you sure you want to delete {{ student }}?</p>
 <form method="post">
     {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Save" class="btn btn-primary">
+    <input type="submit" value="Delete">
 </form>
 </body>
 {% endblock %}
 </html>
-

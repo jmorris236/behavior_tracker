@@ -1,20 +1,17 @@
 {% extends 'base.html' %}
 
-
 <html>
 <head>
-    <title>{{ student }}</title>
+    <title>Notes List for {{ student }}</title>
 </head>
 {% block content %}
 <body>
-<h1>{{ student }}</h1>
-<h2>Notes:</h2>
+<h1>Notes List for {{ student }}</h1>
 <ul>
     {% for note in notes %}
     <li>{{ note.date }} - {{ note.behavior }} - {{ note.notes }}</li>
     {% endfor %}
 </ul>
-<a href="{% url 'behavior_app:note-add' student.pk %}" class="btn btn-primary">Add Note</a>
 </body>
 {% endblock %}
 </html>
