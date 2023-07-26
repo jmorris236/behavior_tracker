@@ -7,13 +7,23 @@
 </head>
 {% block content %}
 <body>
-<h1>Add Note</h1>
+<h1>Add Note for {{ student }}</h1>
+
 <form method="post">
     {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Save" class="btn btn-primary">
+    {{ form.behavior.label_tag }}
+    {{ form.behavior }}
+    <br>
+    {{ form.date.label_tag }}
+    {{ form.date }}
+    <br>
+    {{ form.notes.label_tag }}
+    {{ form.notes }}
+    <br>
+    <button type="submit">Add Note</button>
 </form>
-</body>
-{% endblock %}
-</html>
 
+<a href="{% url 'behavior_app:student-detail' pk=student.pk %}">Cancel</a>
+</body>
+{% endblock  %}
+</html>

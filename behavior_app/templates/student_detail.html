@@ -1,20 +1,40 @@
 {% extends 'base.html' %}
 
-
+<!-- behavior_app/templates/student_detail.html -->
+<!DOCTYPE html>
 <html>
 <head>
-    <title>{{ student }}</title>
+    <title>Student Details</title>
+    <!-- ... Other head content ... -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
+
 {% block content %}
 <body>
-<h1>{{ student }}</h1>
+<h1>{{ student.first_name }} {{ student.last_name }} - Details</h1>
+
 <h2>Notes:</h2>
+{% if student.notes.all %}
 <ul>
-    {% for note in notes %}
-    <li>{{ note.date }} - {{ note.behavior }} - {{ note.notes }}</li>
+    {% for note in student.notes.all %}
+    <li>
+        <strong>Date:</strong> {{ note.date }}<br>
+        <strong>Behavior:</strong> {{ note.behavior.name }}<br>
+        <strong>Notes:</strong> {{ note.notes }}
+        <br>
+        <a href="{% url 'behavior_app:note-delete' pk=note.pk %}">Delete Note</a>
+    </li>
     {% endfor %}
 </ul>
-<a href="{% url 'behavior_app:note-add' student.pk %}" class="btn btn-primary">Add Note</a>
+{% else %}
+<p>No notes available for this student.</p>
+{% endif %}
+
+<a href="{% url 'behavior_app:note-add' pk=student.pk %}">Add a Note</a>
+<a href="{% url 'behavior_app:notes-list' pk=student.pk %}">View All Notes</a>
+<a href="{% url 'behavior_app:delete-student' pk=student.pk %}">Delete Student</a>
+
 </body>
+
 {% endblock %}
 </html>
